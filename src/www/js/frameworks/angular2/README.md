@@ -1,28 +1,21 @@
-# Discography
+# Discography — Angular Course Exercise
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 1.2.6.
+A small Angular application example from the [WebDev course](../../../../../README.md). Generated with **Angular CLI 1.2.6**, this is a historical Angular/TypeScript learning project, not a currently maintained production service.
 
-## Development server
+## Run
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+From this directory, install dependencies with a Node/npm version compatible with the checked-in Angular CLI package, then run the development server:
 
-## Code scaffolding
+```bash
+npm install
+npx ng serve
+# open http://localhost:4200/
+```
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|module`.
+Depending on the old package scripts, use the local CLI executable instead of a global installation. Common original commands: `npx ng build` for output, `npx ng test` for Karma unit tests and `npx ng e2e` for historical Protractor-based end-to-end tests. Protractor and older Angular packages are no longer suitable for new production projects.
 
-## Build
+## How data is used
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `-prod` flag for a production build.
+The discography examples illustrate components and frontend state; no music catalog subscription, licensed recording dataset, AI API key, payment or purchasing service is provided. Add your own rights-cleared sample records if you extend it. No verified UI screenshots are checked in.
 
-## Running unit tests
-
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
-Before running the tests make sure you are serving the app via `ng serve`.
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+The original framework commands and dependencies may require isolation or source updates on modern runtimes.
