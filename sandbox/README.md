@@ -1,12 +1,19 @@
-# Simple sandbox
+# JavaScript Sandbox — Webpack 4
 
-To run:
+An independent browser exercise from the [WebDev course](../README.md), bundled using Webpack 4, Babel 7 and the Webpack development server.
 
-```shell
-$ yarn
-$ yarn start
+## Run locally
+
+Use a Node.js/Yarn environment compatible with these historical dependencies:
+
+```bash
+git clone https://github.com/cal2020/webdev.git
+cd webdev/sandbox
+yarn install
+yarn start
+# open the Webpack dev-server URL (historically http://localhost:8000)
 ```
 
-Open <http://localhost:8000> to view your sandbox project.
+Edit `src/index.js` and refresh or use the development server's reload behavior. `yarn build` writes the configured Webpack output. `yarn test` is a placeholder that exits with an error; it is **not a test suite**.
 
-Start making edits in `src/index.js`. When you save the file, you'll see your changes auto-reloaded into the browser!
+No dataset, API account, paid service, credentials or screenshots are required to use this local sandbox. It is a learning environment, not a secure production app. Review the Webpack configuration before changing ports or build destinations.
