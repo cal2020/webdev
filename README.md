@@ -2,6 +2,29 @@
 
 This is the source code and training content for Web Development courses taught by [Andrew Smith](https://github.com/andrewsouthpaw/).
 
+## Repository origin, course data and compatibility
+
+This is a **fork/archival copy** of the web-development teaching materials attributed to [Andrew Southpaw](https://github.com/AndrewSouthpaw/webdev). Its folders contain **independent exercises**, not a single production application. The original README's upstream links and instructor voice refer to the upstream course, not necessarily to changes maintained in this fork.
+
+### Where to start
+
+```bash
+git clone https://github.com/cal2020/webdev.git
+cd webdev
+# Browse src/www/ for HTML/CSS/JavaScript examples
+# Browse projects/rmdb/ for a React movie-database exercise
+```
+
+Some exercises are standalone HTML and can be viewed using `python3 -m http.server 8000`. Node-based examples each have their own dependency manifest—run `npm install` or `yarn install` **inside the specific project**, not blindly in the repository root. The historic course targets older Node/Yarn and web libraries; an up-to-date installation may require version isolation or dependency updates.
+
+### Data and external services
+
+The React movie-database assignment includes exercise instructions and fixture JSON under `projects/rmdb/src/`. Other training files are included as checked-in assets. There is no general paid dataset or AI service to procure for the course. If a specific exercise calls an external API, follow that exercise's own README and obtain a legitimate key before running it. Never commit personal or commercial content from external sites.
+
+### Screenshots and maintenance
+
+Illustrations or example webpage images are course assets, **not proof of a modern live deployment**. Many nested READMEs originate from third-party instructional/vendor content; keep them in sync with upstream and preserve attribution and licensing rather than rewriting them as first-party applications.
+
 ## Before you begin
 
 If you're familiar with git, I recommend forking the repo before cloning, so you can keep track of your work.
