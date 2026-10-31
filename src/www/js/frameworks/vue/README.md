@@ -1,21 +1,17 @@
-# discography
+# Discography — Vue.js Course Exercise
 
-> A Vue.js project
+A Vue.js training application using an older Vue/Webpack starter. This project is part of the [WebDev course](../../../../../README.md), not a hosted streaming or music-catalog service.
 
-## Build Setup
+## Run the legacy project
 
-``` bash
-# install dependencies
+In a Node.js/npm environment compatible with its bundled dependencies:
+
+```bash
 npm install
-
-# serve with hot reload at localhost:8080
-npm run dev
-
-# build for production with minification
-npm run build
-
-# build for production and view the bundle analyzer report
-npm run build --report
+npm run dev       # historical dev server: http://localhost:8080
+npm run build     # production bundle
 ```
 
-For a detailed explanation on how things work, check out the [guide](http://vuejs-templates.github.io/webpack/) and [docs for vue-loader](http://vuejs.github.io/vue-loader).
+`npm run build --report` may produce the historical bundle analysis when supported by this template. Open the local dev URL and edit the source to explore Vue component state and rendering.
+
+There is no bundled commercial music dataset or provider account to purchase. Use local mock discography entries for testing and verify rights before importing real artist imagery or content. This repo does not establish a working production API or modern dependency support; no verified screenshots are included.
