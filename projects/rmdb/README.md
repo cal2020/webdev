@@ -1,24 +1,23 @@
-# RMDb - React Movie Database
+# RMDb — React Movie Database Exercise
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+A legacy Create React App **React 17** tutorial project that reads movie records from a local `json-server` fixture API. The exercises live under `exercises/`; the application source lives under `src/`.
 
-## Structure
+## Run the complete local exercise
 
-Exercise prompts will be inside the `/exercises` folder. Your work will primarily take place inside `/src`.
+Requires Node.js/Yarn compatible with the older `react-scripts@4`, `json-server@0.16` and `node-sass@5` dependencies. Use an isolated legacy environment rather than deploying this stack unchanged.
 
-## Available Scripts
+```bash
+git clone https://github.com/cal2020/webdev.git
+cd webdev/projects/rmdb
+yarn install
+yarn db            # terminal 1: local JSON API on port 3001
+yarn start         # terminal 2: React app on port 3000
+```
 
-In the project directory, you can run:
+The `db` script loads `src/db.json` and includes `server/chaosMonkeySlowdown.js` to demonstrate network delays. `yarn db-slow` enables a slower fixture server. `yarn test` starts the Create React App test runner. **No external movie-service subscription or API key is required.**
 
-### `yarn start`
+## How to add data
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+Edit `src/db.json` and the supplemental `src/extraMovies.json` fixtures. Keep stable movie IDs and ensure poster/image links are valid. These records are training data, not an authoritative commercial movie catalog; respect data and image rights if republishing.
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
-
-### `yarn test`
-
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+For production, replace the local JSON fixture service with an authenticated backend and verify data licenses. No checked-in screenshot gallery or production deployment is provided. This exercise belongs to the [WebDev course archive](../../README.md).
