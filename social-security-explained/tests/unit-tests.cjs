@@ -1,0 +1,16 @@
+const assert = require('assert');
+const fs = require('fs');
+const vm = require('vm');
+const ctx = { document:{readyState:'loading',addEventListener:()=>{}}, window:{},console,Intl,Math,Number,Map,Set,String,Array,RegExp };
+vm.runInNewContext(fs.readFileSync(__dirname+'/../app.js','utf8'),ctx);
+const {calculateExtraTax,policies,fmt}=ctx.window.SSExplained;
+assert.strictEqual(calculateExtraTax('E1.1',100000),2300);
+assert.strictEqual(calculateExtraTax('E1.1',200000),4243.5);
+assert.strictEqual(calculateExtraTax('E2.1',200000),961);
+assert.strictEqual(calculateExtraTax('E2.1',100000),0);
+assert.strictEqual(calculateExtraTax('E2.17',500000),6200);
+assert.strictEqual(calculateExtraTax('E2.17',200000),0);
+assert.strictEqual(policies.length,6);
+assert.deepStrictEqual(Array.from(policies,p=>p.percent),[101,58,53,15,24,15]);
+assert.strictEqual(fmt(7920),'$7,920');
+console.log('Unit tests PASS: tax illustrations, all 6 standalone actuarial scores, currency formatting.');
