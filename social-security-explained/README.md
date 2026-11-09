@@ -78,3 +78,12 @@ MIT (code). U.S. government facts and sources are attributed through links; SSA 
 The project has seven actual local Chromium screenshot captures (four desktop, three mobile), a 7-step manually paced browser walkthrough (optional 20 seconds per step, pausable), and a full source-linked user manual. They are published in the shared [portfolio demo gallery](https://cal2020.github.io/hello-world-app/demos/) and do not represent screenshots of an unrestricted live-URL session.
 
 This release also contains a `source.zip` in the portfolio-hosted mirror for easy self-hosting. The canonical maintained source branch is `cal2020/webdev`, `release/social-security-explained`.
+## November 9, 2026 — Congressional contact usability update
+
+- People can select Senator, Representative or Delegate / Resident Commissioner and enter a verified officeholder name; the letter then uses that office and name. A generic salutation remains available.
+- A current-Congress notice explains why November 2026 election winners do not yet appear as serving representatives on the House.gov lookup.
+- ZIP-boundary guidance makes clear that a five-digit ZIP is not guaranteed to identify one district; the official lookup may request ZIP+4 or a street address on House.gov.
+- Fixed `[hidden]` styling so irrelevant ZIP controls are not displayed for D.C. or U.S. territories.
+- Browser-local desktop/mobile Chromium contact-flow tests passed. External HTTPS navigation and iOS Safari remain unverified. No messages are sent automatically and no officeholder names are inferred from ZIP codes.
+
+Source: https://www.house.gov/representatives/find-your-representative

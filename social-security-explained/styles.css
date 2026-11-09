@@ -14,3 +14,18 @@
 @media print{.site-header,.hero-actions,.hero-visual,.action-grid,.letter-actions,.site-footer,.bridge-banner,.policy-list{display:none!important}body{background:white;color:black}.section{padding:20px 0}.letter-editor{border:none;padding:0}.letter-editor textarea{min-height:600px}}
 
 @media(max-width:460px){.site-header .brand-quiet{display:none}.header-cta{font-size:.7rem;max-width:129px}}
+/* V1.1: Verified-officials contact flow, including election transition and ZIP boundary clarity. */
+.office-guide,.recipient-help,.current-congress-note{font-size:13px;line-height:1.55;color:#465b67}
+.office-guide{margin:8px 0 16px;padding:13px 15px;border:1px solid #a6c9d0;border-radius:12px;background:#eff9fa}
+.current-congress-note{margin-top:18px;padding:14px 16px;background:#f8f2e7;border:1px solid #e1caa3;border-radius:12px;color:#493f32}
+.current-congress-note a{font-weight:750;color:#24566b;text-underline-offset:3px}
+.recipient-row{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:8px}
+.recipient-row .field{min-width:0}
+.recipient-help{margin:0 0 18px;color:#576873}
+.send-checklist{border:1px solid #a6c9d0;background:#f0f8fa;border-radius:14px;margin-top:19px;padding:18px 20px;color:#1c3544}
+.send-checklist>strong{display:block;font-size:16px;margin-bottom:8px}
+.send-checklist ol{margin:0;padding-left:23px;line-height:1.6}
+.send-checklist li{padding-left:3px;margin:7px 0}
+.send-checklist p{margin:11px 0 0;font-size:12px;color:#526774}
+@media(max-width:760px){.recipient-row{grid-template-columns:1fr}}
+[hidden]{display:none!important}

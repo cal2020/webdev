@@ -167,6 +167,10 @@
     const name=$('senderName').value.trim();
     const personal=$('personalStory').value.trim();
     const view=$('letterApproach').value;
+    const office=$('recipientOffice').value;
+    const officeName=$('recipientName').value.replace(/[\r\n\t]+/g,' ').replace(/\s+/g,' ').trim().slice(0,120);
+    const titles={senator:'Senator',representative:'Representative',delegate:'Delegate / Resident Commissioner'};
+    const salutation=(officeName&&titles[office])?`Dear ${titles[office]} ${officeName},`:'Dear Member of Congress,';
     const openings={
       balanced:'I am asking you to work across party lines on an actionable Social Security financing agreement before the projected 2032 retirement trust fund depletion date. Please explain which mix of revenue and benefit changes you support, and what that mix means for current and future beneficiaries.',
       protect:'Please prioritize protecting retirement and survivor benefits, especially for people who depend on them for essentials. I would like to know how you would fund those commitments sustainably without sudden reductions for current beneficiaries.',
@@ -175,7 +179,7 @@
     };
     $('letterSubject').value="Please act on Social Security's financing before 2032";
     const lines=[
-      'Dear Member of Congress,','',
+      salutation,'',
       `I am a constituent${location?' in '+location:''}. ${openings[view]||openings.balanced}`,'',
       'According to the Social Security Administration\'s 2026 Trustees Report, the retirement and survivor trust fund is projected to exhaust its reserves in late 2032. Continuing income would then be sufficient to cover only about 78% of scheduled benefits. This is a financing projection, not an enacted across-the-board benefit cut.',''
     ];
@@ -225,6 +229,7 @@
     $('zipInput').addEventListener('input',()=>{$('zipInput').value=$('zipInput').value.replace(/[^0-9]/g,'').slice(0,5);renderStateLinks();});
     $('copyZip').addEventListener('click',async()=>{const ok=await copyText($('zipInput').value);$('letterStatus').textContent=ok?'ZIP code copied. Paste it on House.gov.':'Could not copy ZIP. Enter it on House.gov.';});
     $('draftLetter').addEventListener('click',createDraft);
+    ['recipientOffice','recipientName'].forEach(id=>$(id).addEventListener('change',()=>{$('letterStatus').textContent='Click Create / refresh my letter to use the selected office.';}));
     $('copyLetter').addEventListener('click',async()=>{const ok=await copyText($('letterBody').value);$('letterStatus').textContent=ok?'Message copied. Paste it into your representative’s contact form.':'Copy not available in this browser. Select the letter and copy it manually.';});
     $('copySubject').addEventListener('click',async()=>{const ok=await copyText($('letterSubject').value);$('letterStatus').textContent=ok?'Subject copied.':'Copy not available; select the subject and copy it manually.';});
     $('shareFacts').addEventListener('click',async()=>{
