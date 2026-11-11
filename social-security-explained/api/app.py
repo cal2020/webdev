@@ -105,10 +105,17 @@ def parse_house(xml: bytes, expected_congress: int | None = None) -> dict[str, d
         info = member.find("member-info")
         if info is None:
             info = member
-        full_name = _text(info, "official-name", "firstname")
-        if not full_name:
-            first, last = _text(info, "firstname"), _text(info, "lastname")
-            full_name = f"{first} {last}".strip()
+        # Clerk names use firstname and lastname; namelist is "Last, First".
+        # Never return firstname alone as a verified person's complete name.
+        first, middle, last = _text(info, "firstname"), _text(info, "middlename"), _text(info, "lastname")
+        full_name = " ".join(filter(None, (first, middle, last))).strip()
+        if not first or not last:
+            display = _text(info, "namelist")
+            if "," in display:
+                last_part, first_part = display.split(",", 1)
+                full_name = f"{first_part.strip()} {last_part.strip()}".strip()
+            else:
+                full_name = ""
         if not full_name:
             continue
         bio = _text(info, "bioguideID")
