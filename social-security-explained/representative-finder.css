@@ -1,0 +1,47 @@
+/* Social Security Explained v1.2 — official-source constituent finder */
+.verified-finder{margin:18px 0 20px;background:linear-gradient(140deg,#edf9f5,#eff7fa);border:1px solid #b8dbd3;border-radius:18px;padding:20px;box-shadow:0 8px 30px rgba(17,65,70,.06)}
+.verified-finder-heading{display:flex;align-items:flex-start;gap:12px}
+.verified-mark{display:grid;place-items:center;flex:0 0 37px;height:37px;background:#0f483f;color:#c5fce8;border-radius:12px;font-size:20px}
+.verified-kicker{font-size:10px;font-weight:850;letter-spacing:.095em;color:#247261;margin:0 0 5px}
+.verified-finder h4{font-size:clamp(18px,2.2vw,22px);line-height:1.25;color:#12332c;margin:0 0 7px}
+.verified-finder-heading p{font-size:13px;line-height:1.55;color:#3d5b56;margin:0 0 14px}
+.verified-form{display:grid;grid-template-columns:1.5fr 1fr;gap:11px;align-items:end}
+.verified-field label{display:block;font-size:12px;font-weight:750;color:#193b3b;margin:0 0 6px}
+.verified-field label span{font-weight:450;color:#5e7374}
+.verified-field input{width:100%;max-width:100%;padding:13px 12px;border:1px solid #aacac7;border-radius:10px;background:#fff;color:#1c3a43;font-size:14px;line-height:1.3}
+.verified-field input:focus-visible{outline:3px solid #65c7aa;outline-offset:2px}
+.verified-privacy{display:flex;gap:9px;align-items:flex-start;background:#fdfefd;border-left:3px solid #73bca9;border-radius:0 10px 10px 0;padding:12px;margin:12px 0;color:#455e5b;font-size:11px;line-height:1.55}
+.verified-privacy a,.finder-sources a{color:#166b65;text-underline-offset:2px;overflow-wrap:anywhere}
+.finder-consent{display:flex;gap:10px;align-items:flex-start;margin:10px 0;padding:10px 12px;border:1px solid #b5d0c9;border-radius:9px;background:#f4faf8;color:#284b47;font-size:12px;line-height:1.5;cursor:pointer}
+.finder-consent input{accent-color:#006e52;min-width:18px;min-height:18px;margin-top:1px}
+.finder-controls{display:grid;gap:8px;align-items:center}
+.verified-finder .finder-button{font-size:14px;line-height:1.3;min-height:47px;width:100%;justify-content:center;display:flex;gap:7px;align-items:center}
+.verified-finder .finder-button:disabled{opacity:.65;cursor:wait}
+#finderStatus{font-size:12px;line-height:1.45;color:#536d65}
+#finderStatus.finder-error{color:#a43e2c;font-weight:750}
+#finderStatus.finder-success{color:#156749;font-weight:750}
+.finder-results{margin-top:17px;border-top:1px solid #c4d9d3;padding-top:14px}
+.verified-results-intro h5{font-size:17px;color:#143830;margin:0 0 3px}
+.verified-results-intro p{font-size:11px;color:#506c64;margin:0 0 13px}
+.verified-card-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,235px),1fr));gap:10px}
+.verified-official{padding:13px;border:1px solid #c1d5ce;background:#fff;border-radius:12px;min-width:0}
+.verified-official-top{display:flex;justify-content:space-between;gap:5px;align-items:flex-start}
+.verified-role{font-size:10px;text-transform:uppercase;letter-spacing:.075em;color:#57776e;font-weight:800}
+.verified-official h5{font-size:16px;line-height:1.26;color:#17362e;margin:5px 0 4px;overflow-wrap:anywhere}
+.verified-district{font-size:11px;color:#527168;margin:0 0 6px}
+.verified-source-mark{flex:0 0 auto;background:#e8f5e8;border-radius:6px;padding:3px 5px;font-size:8px;font-weight:800;letter-spacing:.015em;color:#2a6657}
+.verified-official-actions{display:flex;gap:9px;align-items:center;flex-wrap:wrap;padding-top:9px;border-top:1px solid #e8efed;margin-top:9px}
+.finder-official-link{color:#166557;font-size:12px;font-weight:650;text-underline-offset:2px;overflow-wrap:anywhere}
+.finder-use{border:1px solid #206a55;background:#11483f;color:#f5fefa;border-radius:8px;padding:9px 10px;font-size:12px;font-weight:750;cursor:pointer;min-height:39px}
+.finder-use:focus-visible,.finder-button:focus-visible{outline:3px solid #ffc781;outline-offset:3px}
+.finder-use:hover{background:#0b6652}
+.finder-fallback{border:1px solid #e7d6ab;background:#fff9ea;color:#614e27;border-radius:10px;padding:12px;margin-top:10px;font-size:12px;line-height:1.55}
+.finder-fallback p{margin:0 0 6px}
+.finder-warning{color:#915d24;background:#fff9ee;padding:10px;font-size:12px;border-radius:10px}
+.verified-final-note{font-size:11px;line-height:1.5;color:#576b65;margin:12px 0 0}
+.finder-sources{display:flex;flex-wrap:wrap;gap:7px 12px;align-items:center;margin-top:15px;font-size:10px;line-height:1.4;color:#4a6b63}
+.finder-sources strong{color:#345f54}
+.verified-finder [hidden]{display:none!important}
+@media(max-width:860px){.verified-form{grid-template-columns:1fr}}
+@media(max-width:450px){.verified-finder{padding:14px 12px}.verified-finder-heading{gap:9px}.verified-mark{width:32px;flex-basis:32px;height:32px}.verified-source-mark{font-size:7px}.verified-official-actions{align-items:stretch}.finder-use{width:100%}}
+@media(prefers-reduced-motion:reduce){.verified-finder *{scroll-behavior:auto!important;transition:none!important}}

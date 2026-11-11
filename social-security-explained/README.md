@@ -87,3 +87,9 @@ This release also contains a `source.zip` in the portfolio-hosted mirror for eas
 - Browser-local desktop/mobile Chromium contact-flow tests passed. External HTTPS navigation and iOS Safari remain unverified. No messages are sent automatically and no officeholder names are inferred from ZIP codes.
 
 Source: https://www.house.gov/representatives/find-your-representative
+
+## November 11, 2026 — Verified constituent finder v1.2
+
+A new **Find my current lawmakers** panel uses an independent official-source backend to fetch sitting House and Senate members. The visitor chooses a state for senators; an optional full street address (with explicit consent) is sent in an HTTPS POST body to the free Render service and forwarded to the U.S. Census Geocoder for current-Congress district verification. The app never guesses from ZIP alone (except a state's single at-large House seat), never stores the address, and does not send the letter. Render and Census may retain infrastructure logs. Source, privacy boundaries, failure modes, and tests: [FINDER_README.md](FINDER_README.md).
+
+The existing education/calc features remain standalone, but automatic official lookups require internet and available government sources. The data feed and live browser behavior have independent verification statuses; local tests use fixtures rather than private addresses.
