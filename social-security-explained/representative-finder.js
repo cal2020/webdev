@@ -14,7 +14,7 @@
 
   const markup = `
   <section class="verified-finder" aria-labelledby="verified-finder-title" id="verified-finder">
-    <div class="verified-finder-heading"><span class="verified-mark" aria-hidden="true">✦</span><div><div class="verified-kicker">OFFICIAL-SOURCE LOOKUP · CURRENT CONGRESS</div><h4 id="verified-finder-title">Find your lawmakers</h4><p>See who represents you <strong>right now</strong>. A state alone finds your senators. Add an address for your exact House district.</p></div></div>
+    <div class="verified-finder-heading"><span class="verified-mark" aria-hidden="true">✦</span><div><div class="verified-kicker">OFFICIAL-SOURCE LOOKUP · 119TH CONGRESS</div><h4 id="verified-finder-title">Find your lawmakers</h4><p>See who represents you <strong>right now</strong>. A state alone finds your senators. Add an address for your exact House district.</p></div></div>
     <div class="verified-form">
       <div class="verified-field"><label for="finderStreet">Street address <span>(optional)</span></label><input id="finderStreet" type="text" maxlength="110" placeholder="123 Example St" autocomplete="street-address" aria-describedby="finderPrivacy"></div>
       <div class="verified-field"><label for="finderCity">City <span>(for street lookup)</span></label><input id="finderCity" type="text" maxlength="75" autocomplete="address-level2" placeholder="e.g. Vallejo"></div>
@@ -122,19 +122,22 @@
     root.append(intro);
 
     const people = [];
-    if (data.house && typeof data.house.name === 'string') people.push(data.house);
-    if (Array.isArray(data.senators)) people.push(...data.senators.filter(s => s && typeof s.name === 'string'));
+    // A one-word first name is not a verified officeholder identity.
+    // Fail closed if an upstream roster changed its XML field layout.
+    const fullName = person => person && typeof person.name === 'string' && person.name.trim().split(/\s+/).length >= 2;
+    if (fullName(data.house)) people.push(data.house);
+    if (Array.isArray(data.senators)) people.push(...data.senators.filter(fullName));
     if (people.length) {
       const grid = document.createElement('div');
       grid.className = 'verified-card-grid';
       people.forEach(p => grid.append(makeCard(p)));
       root.append(grid);
     }
-    if (!data.house) {
+    if (!data.house || !people.includes(data.house)) {
       const fallback = document.createElement('div');
       fallback.className = 'finder-fallback';
       const note = document.createElement('p');
-      note.textContent = explainHouse(data.house_status, data, streetEntered);
+      note.textContent = data.house && !people.includes(data.house) ? 'The House roster did not return a complete official name. Verify the officeholder through House.gov before sending.' : explainHouse(data.house_status, data, streetEntered);
       fallback.append(note, makeLink('Check House.gov ↗', HOUSE));
       root.append(fallback);
     }

@@ -40,6 +40,11 @@ def test_house_clerk_and_senate_parsers():
     assert s["CA"][0]["name"]=="Adam Schiff"
 
 
+def test_actual_clerk_member_info_names():
+    xml = b'''<MemberData><title-info><congress-num>119</congress-num></title-info><members><member><statedistrict>CO02</statedistrict><member-info><namelist>Neguse, Joe</namelist><firstname>Joe</firstname><lastname>Neguse</lastname></member-info></member></members></MemberData>'''
+    assert app.parse_house(xml,119)["CO-02"]["name"] == "Joe Neguse"
+
+
 def test_wrong_congress_fails_closed():
     with pytest.raises(ValueError):app.parse_house(HOUSE,120)
 
