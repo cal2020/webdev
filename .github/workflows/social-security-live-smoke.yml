@@ -1,0 +1,55 @@
+name: Social Security civic lookup smoke
+on:
+  push:
+    branches: [release/social-security-explained]
+    paths:
+      - 'social-security-explained/**'
+      - '.github/workflows/social-security-live-smoke.yml'
+  workflow_dispatch:
+
+jobs:
+  api-and-live-sources:
+    runs-on: ubuntu-latest
+    timeout-minutes: 8
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Unit tests
+        run: |
+          pip install -q -r social-security-explained/api/requirements.txt pytest httpx
+          pytest -q social-security-explained/api/test_app.py
+      - name: Public API and current official roster
+        run: |
+          python - <<'PY'
+          import json, time, urllib.request, urllib.error
+          base='https://social-security-congress-finder.onrender.com'
+          def call(path, obj=None):
+              data=json.dumps(obj).encode() if obj is not None else None
+              req=urllib.request.Request(base+path, data=data,
+                  headers={'Content-Type':'application/json','User-Agent':'Social-Security-Civic-Smoke/1.0'},
+                  method='POST' if obj is not None else 'GET')
+              for attempt in range(4):
+                  try:
+                      with urllib.request.urlopen(req,timeout=45) as r:
+                          return json.load(r)
+                  except (TimeoutError,urllib.error.URLError) as e:
+                      if attempt==3:raise
+                      print('Retry',path,'attempt',attempt+1,str(e)[:200])
+                      time.sleep(8)
+          health=call('/health')
+          assert health['ok'] is True
+          roster=call('/api/roster-status')
+          assert roster.get('ok') and roster['house_members']>420 and roster['senators']>=95,roster
+          print('Official roster:',roster['congress'],roster['house_members'],roster['senators'])
+          ca=call('/api/lookup',{'state':'CA','zip':'94510'})
+          assert len(ca.get('senators',[]))==2,ca
+          assert ca.get('house') is None,'ZIP alone must not guess a House seat'
+          assert all(len(s.get('name','').split())>1 for s in ca['senators']),'Incomplete senator name'
+          ak=call('/api/lookup',{'state':'AK'})
+          assert ak.get('house_status')=='matched' and len(ak['house']['name'].split())>1,ak
+          dc=call('/api/lookup',{'state':'DC'})
+          assert dc.get('senators')==[] and dc.get('house_status')=='matched' and len(dc['house']['name'].split())>1,dc
+          print('PASS — current roster, CA Senate, AK at-large House, DC delegate, no ZIP-based guessing.')
+          PY
