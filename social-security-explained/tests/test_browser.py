@@ -5,7 +5,7 @@ ROOT=Path(__file__).resolve().parents[1]
 OLD=Path('/mnt/data/Social-Security-Explained.html').read_text()
 CSS=(ROOT/'representative-finder.css').read_text()
 JS=(ROOT/'representative-finder.js').read_text()
-API='https://social-security-civic-lookup.onrender.com/api/lookup'
+API='https://social-security-congress-finder.onrender.com/api/lookup'
 RESP={
  'state':'CA','congress':119,'updated_at':'2026-11-11T17:00:00Z','warning':None,
  'house_status':'matched','district':4,
